@@ -1,4 +1,4 @@
-// ko-deep-watcher 1.0.0-rc - Deeply and dynamically observe an object hierarchy | (c) 2015 Joshua Searles |  http://www.opensource.org/licenses/mit-license
+// ko-deep-watcher 1.0.0 - Deeply and dynamically observe an object hierarchy | (c) 2015 Joshua Searles |  http://www.opensource.org/licenses/mit-license
 
 (function (root, factory) {
 	if (typeof define === "function" && define.amd) {
@@ -73,7 +73,7 @@
    */
 	var koWatch = ko.watch = function (root, callback, options) {
 		var visited = [];
-		var wm = WeakMap();
+		var wm = new WeakMap();
 		
 		options = options ? extend({}, koWatch.defaultOptions, options) : koWatch.defaultOptions;
 		var shouldWatch = options.shouldWatch || returnTrue;
@@ -113,23 +113,22 @@
 				return;
 			}
 			
-			var index = ko.utils.arrayIndexOf(visited, target);
-			if (index >= 0) {
-				visited.splice(index, 1);
-			}
-
 			if (ko.isSubscribable(target) && wm.has(target)) {
 				wm.get(target).dispose();
 				wm["delete"](target);
 
 				target = target.peek();
 			}
-
-			each(target, getThen(unwatch));
+			
+			var index = ko.utils.arrayIndexOf(visited, target);
+			if (index >= 0) {
+				visited.splice(index, 1);
+				each(target, getThen(unwatch));
+			}
 		}
 
 		function subscribe (obj, key, parent) {
-			if (!isWatchable(obj) || !shouldWatch(obj)) {
+			if (!isWatchable(obj) || !shouldWatch(obj, key, parent)) {
 				return;
 			}
 
@@ -185,6 +184,7 @@
 					} else if (change.status === "added") {
 						value = change.value;
 					} else {
+						// deleted
 						priorValue = change.value;
 					}
 

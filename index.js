@@ -111,19 +111,18 @@
 				return;
 			}
 			
-			var index = ko.utils.arrayIndexOf(visited, target);
-			if (index >= 0) {
-				visited.splice(index, 1);
-			}
-
 			if (ko.isSubscribable(target) && wm.has(target)) {
 				wm.get(target).dispose();
 				wm["delete"](target);
 
 				target = target.peek();
 			}
-
-			each(target, getThen(unwatch));
+			
+			var index = ko.utils.arrayIndexOf(visited, target);
+			if (index >= 0) {
+				visited.splice(index, 1);
+				each(target, getThen(unwatch));
+			}
 		}
 
 		function subscribe (obj, key, parent) {
@@ -183,6 +182,7 @@
 					} else if (change.status === "added") {
 						value = change.value;
 					} else {
+						// deleted
 						priorValue = change.value;
 					}
 

@@ -1,6 +1,6 @@
 {
   "name": "ko-deep-watcher",
-  "version": "1.0.0-rc",
+  "version": "1.0.0",
   "description": "Deeply and dynamically observe an object hierarchy",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "gulp-header": "^1.7.1",
     "gulp-mocha": "^2.2.0",
     "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.5.1"
+    "gulp-uglify": "^1.5.1",
+    "mocha": "^2.3.4"
   },
   "dependencies": {
     "knockout": ">= 3.0.0",
