@@ -1,0 +1,26 @@
+{
+  "name": "knockout-deep-watcher",
+  "description": "Deeply and dynamically observe an object hierarchy",
+  "main": "index.js",
+  "authors": [
+    "Joshua Searles"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "knockout",
+    "observable"
+  ],
+  "homepage": "https://github.com/jrsearles/ko-deep-watcher",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
