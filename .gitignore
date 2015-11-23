@@ -1,0 +1,7 @@
+node_modules
+typings
+jsconfig.json
+.settings
+.vscode
+gulpfile.js
+npm-debug.log
