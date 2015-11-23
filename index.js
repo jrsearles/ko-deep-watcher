@@ -127,7 +127,7 @@
 		}
 
 		function subscribe (obj, key, parent) {
-			if (!isWatchable(obj) || !shouldWatch(obj)) {
+			if (!isWatchable(obj) || !shouldWatch(obj, key, parent)) {
 				return;
 			}
 
