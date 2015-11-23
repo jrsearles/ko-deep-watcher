@@ -71,7 +71,7 @@
    */
 	var koWatch = ko.watch = function (root, callback, options) {
 		var visited = [];
-		var wm = WeakMap();
+		var wm = new WeakMap();
 		
 		options = options ? extend({}, koWatch.defaultOptions, options) : koWatch.defaultOptions;
 		var shouldWatch = options.shouldWatch || returnTrue;
