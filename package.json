@@ -20,5 +20,20 @@
   "dependencies": {
     "knockout": ">= 3.0.0",
     "weakmap": "0.0.6"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrsearles/ko-deep-watcher.git"
+  },
+  "keywords": [
+    "knockout",
+    "observable"
+  ],
+  "bugs": {
+    "url": "https://github.com/jrsearles/ko-deep-watcher/issues"
+  },
+  "homepage": "https://github.com/jrsearles/ko-deep-watcher#readme"
 }
